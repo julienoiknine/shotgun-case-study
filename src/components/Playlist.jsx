@@ -61,37 +61,41 @@ function Playlist({ tracks }) {
 
 function PlaylistTrack({ playlistTrack }) {
 
+  const track = playlistTrack.track;
+
   const { favorites, setFavorites } = useContext(FavoritesContext);
 
   const [icon, setIcon] = useState(faHeart);
 
   useEffect(() => {
-    favorites.get(playlistTrack.track.id) !== undefined ? setIcon(faHeartSolid) : setIcon(faHeart)
+    favorites.get(track.id) !== undefined ? setIcon(faHeartSolid) : setIcon(faHeart)
   });
 
   function toggleFavorite(e) {
-    const isFavorite = favorites.get(playlistTrack.track.id) !== undefined;
+    const isFavorite = favorites.get(track.id) !== undefined;
     const newFavorites = new Map(favorites);
     if (isFavorite) {
       setIcon(faHeart);
-      newFavorites.delete(playlistTrack.track.id);
+      newFavorites.delete(track.id);
     } else {
       setIcon(faHeartSolid);
-      newFavorites.set(playlistTrack.track.id, playlistTrack);
+      newFavorites.set(track.id, playlistTrack);
     }
     setFavorites(newFavorites);
   }
 
   function playSong() {
-    console.log(`playing song ${playlistTrack.track.name}`);
+    console.log(`playing song ${track.name}`);
+    var a = new Audio(track.preview_url);
+    a.play();
   }
 
   return (
     <tr>
       <td className='Like-cell'><FontAwesomeIcon icon={icon} className="Like-icon" onClick={toggleFavorite} /></td>
-      <td><span className='Clickable-span' onClick={playSong}>{playlistTrack.track.name}</span></td>
-      <td>{playlistTrack.track.artists.map((e) => e.name).join(', ')}</td>
-      <td>{playlistTrack.track.album.name}</td>
+      <td><span className='Clickable-span' onClick={playSong}>{track.name}</span></td>
+      <td>{track.artists.map((e) => e.name).join(', ')}</td>
+      <td>{track.album.name}</td>
       <td>{playlistTrack.added_at}</td>
     </tr>
   );
