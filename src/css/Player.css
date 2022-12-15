@@ -23,11 +23,12 @@
     display: flex;
     padding: 5px;
     align-items: center;
+    gap: 15px;
 }
 
 .Player-icon {
-    margin: 10px;
-    width: 0 10px 0 10px;
+    width: 10px;
+    margin: 0 15px 0 15px;
 }
 
 .Player-img {
@@ -35,10 +36,10 @@
     border-radius: 3px;
 }
 
-.Controls-cont {
+.Row-flex {
+    align-items: center;
     display: flex;
     flex-wrap: nowrap;
-    margin: 0 15px 0 15px;
 }
 
 .Time-cont {

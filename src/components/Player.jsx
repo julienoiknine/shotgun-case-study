@@ -79,14 +79,16 @@ function Player() {
       </div>
       <div className='Player-cont'>
         {track ? <img className='Player-img' src={track.album.images[0].url} alt="" /> : null}
-        <div className='Controls-cont'>
-          <FontAwesomeIcon icon={faBackwardStep} className="Player-icon" onClick={onPrevious} />
+        <div className='Row-flex'>
+          <FontAwesomeIcon icon={faBackwardStep} onClick={onPrevious} />
           <FontAwesomeIcon icon={audioPaused ? faPlay : faPause} onClick={togglePlay} className="Player-icon" />
-          <FontAwesomeIcon icon={faForwardStep} className="Player-icon" onClick={onNext} />
+          <FontAwesomeIcon icon={faForwardStep} onClick={onNext} />
         </div>
-        <span className='Time-cont'>{getMinutes(progress)}</span>
-        <span> / </span>
-        <span className='Time-cont'>{getMinutes(max)}</span>
+        <div className='Row-flex'>
+          <span className='Time-cont'>{getMinutes(progress)}</span>
+          <span> / </span>
+          <span className='Time-cont'>{getMinutes(max)}</span>
+        </div>
         {track ?
           <span className='Ellipsis'>{`${track.name} - ${track.artists.map((e) => e.name).join(', ')}`}</span>
           : null}
