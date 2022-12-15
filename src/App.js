@@ -10,19 +10,21 @@ export const FavoritesContext = React.createContext({
   setFavorites: (favorites) => { }
 });
 
-export const PlayedTrackContext = React.createContext({
-  playedTrack: {},
-  setPlayedTrack: (playedTrack) => { }
+export const PlayerContext = React.createContext({
+  playerContext: { index: 0, tracklist: [] },
+  setPlayerContext: (playerContext) => { }
 });
 
 function App() {
 
+  console.log('app rendered')
+
   const [favorites, setFavorites] = useState(new Map());
-  const [playedTrack, setPlayedTrack] = useState({});
+  const [playerContext, setPlayerContext] = useState({ index: 0, tracklist: [] });
 
   return (
     <FavoritesContext.Provider value={{ favorites, setFavorites }}>
-      <PlayedTrackContext.Provider value={{ playedTrack, setPlayedTrack }}>
+      <PlayerContext.Provider value={{ playerContext, setPlayerContext }}>
         <BrowserRouter>
           <Navbar />
           <Routes>
@@ -31,7 +33,7 @@ function App() {
           </Routes>
           <Player />
         </BrowserRouter>
-      </PlayedTrackContext.Provider>
+      </PlayerContext.Provider>
     </FavoritesContext.Provider>
   );
 }
