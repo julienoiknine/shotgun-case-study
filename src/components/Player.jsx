@@ -74,16 +74,23 @@ function Player() {
 
   return (
     <div className={getFooterClass()}>
-      {track ? <img className='Player-img' src={track.album.images[0].url} alt="" /> : null}
-      <div className='Controls-cont'>
-        <FontAwesomeIcon icon={faBackwardStep} className="Player-icon" onClick={onPrevious} />
-        <FontAwesomeIcon icon={audioPaused ? faPlay : faPause} onClick={togglePlay} className="Player-icon" />
-        <FontAwesomeIcon icon={faForwardStep} className="Player-icon" onClick={onNext} />
+      <div className='Range-cont'>
+        <input type="range" max={max} value={progress} onChange={() => { }}></input>
       </div>
-      <span className='Time-cont'>{getMinutes(progress)}</span>
-      <span> / </span>
-      <span className='Time-cont'>{getMinutes(max)}</span>
-      <input type="range" max={max} value={progress} onChange={() => { }}></input>
+      <div className='Player-cont'>
+        {track ? <img className='Player-img' src={track.album.images[0].url} alt="" /> : null}
+        <div className='Controls-cont'>
+          <FontAwesomeIcon icon={faBackwardStep} className="Player-icon" onClick={onPrevious} />
+          <FontAwesomeIcon icon={audioPaused ? faPlay : faPause} onClick={togglePlay} className="Player-icon" />
+          <FontAwesomeIcon icon={faForwardStep} className="Player-icon" onClick={onNext} />
+        </div>
+        <span className='Time-cont'>{getMinutes(progress)}</span>
+        <span> / </span>
+        <span className='Time-cont'>{getMinutes(max)}</span>
+        {track ?
+          <span className='Ellipsis'>{`${track.name} - ${track.artists.map((e) => e.name).join(', ')}`}</span>
+          : null}
+      </div>
     </div>
   );
 }
