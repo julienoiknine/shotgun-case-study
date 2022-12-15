@@ -12,6 +12,7 @@ const QUERY = gql`
           id
           name
           preview_url
+          duration_ms
           album {
             name
             images {

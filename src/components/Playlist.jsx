@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarPlus, faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
 import { useContext, useEffect, useState } from 'react';
-import { FavoritesContext } from '../App';
+import { FavoritesContext, PlayedTrackContext } from '../App';
 
 function CoversGrid({ coversUrl }) {
   return (
@@ -53,17 +53,23 @@ function Playlist({ tracks }) {
         </tr>
       </thead>
       <tbody>
-        {tracks.map((e, i) => <PlaylistTrack key={i} playlistTrack={e} />)}
+        {tracks.map((e, i) => <PlaylistTrack
+          key={i}
+          playlistTrack={e}
+          previous={tracks[i - 1]}
+          next={tracks[i + 1]}
+        />)}
       </tbody>
     </table>
   );
 }
 
-function PlaylistTrack({ playlistTrack }) {
+function PlaylistTrack({ playlistTrack, next, previous }) {
 
   const track = playlistTrack.track;
 
   const { favorites, setFavorites } = useContext(FavoritesContext);
+  const { setPlayedTrack } = useContext(PlayedTrackContext);
 
   const [icon, setIcon] = useState(faHeart);
 
@@ -85,9 +91,8 @@ function PlaylistTrack({ playlistTrack }) {
   }
 
   function playSong() {
-    console.log(`playing song ${track.name}`);
-    var a = new Audio(track.preview_url);
-    a.play();
+    console.log(`setting played track to ${track.name}`);
+    setPlayedTrack(track);
   }
 
   return (
