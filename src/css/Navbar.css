@@ -1,9 +1,38 @@
 .Navbar {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 2em;
+    height: 60px;
 }
 
-.Navbar h2 {
+.Route-link {
+    text-decoration: none;
+    /*transition: transform 0.05s ease-in;*/
+    width: 130px;
+    height: 20px;
+    position: relative;
+    transform-origin: right;
+    border-bottom: solid;
+    border-color: white;
+}
+
+.Route-link h2 {
+    position: absolute;
+    left: 100%;
+    transform: translateX(-100%);
     color: var(--font-color-1);
+    font-size: 20px;
+    margin: 0;
+}
+
+.Route-active {
+    transition: all 0.05s;
+    -webkit-transform: rotate(-20deg);
+}
+
+.Route-active h2 {
+    transition: all 0.5s ease-in;
+    transform: translateX(0);
+    left: 0;
 }
