@@ -4,6 +4,7 @@ import { faPlay, faPause, faForwardStep, faBackwardStep } from '@fortawesome/fre
 import { PlayerContext } from '../App';
 import { isEmpty, getMinutes } from '../utils/utils';
 import '../css/Player.css';
+import { fieldNameFromStoreName } from '@apollo/client/cache';
 
 const audio = new Audio();
 
@@ -72,12 +73,24 @@ function Player() {
     }
   }
 
+  function onRangeChange(e) {
+    audio.currentTime = e.target.value;
+  }
+
   return (
     <div className={getFooterClass()}>
       <div className='Range-cont'>
-        <input type="range" max={max} value={progress} onChange={() => { }}></input>
+        <input
+          type="range"
+          max={max}
+          value={progress}
+          onChange={onRangeChange}
+          style={{ ...{ backgroundSize: `${(progress) * 100 / max}% 100%` } }}>
+        </input>
       </div>
       <div className='Player-cont'>
+        <div className='Noise'></div>
+        <div className='Overlay'></div>
         {track ? <img className='Player-img' src={track.album.images[0].url} alt="" /> : null}
         <div className='Row-flex'>
           <FontAwesomeIcon icon={faBackwardStep} onClick={onPrevious} />
