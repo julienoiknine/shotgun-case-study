@@ -70,6 +70,9 @@
 
 .Time-cont {
     margin: 0 2px 0 2px;
+    font-size: var(--font-size-1);
+    width: 35px;
+    text-align: center;
 }
 
 .Ellipsis {
@@ -77,6 +80,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    font-size: var(--font-size-1);
 }
 
 input[type="range"] {

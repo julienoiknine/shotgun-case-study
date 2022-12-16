@@ -4,6 +4,8 @@ import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
 import { useContext, useEffect, useState } from 'react';
 import { FavoritesContext, PlayerContext } from '../App';
 import BlurContainer from './BlurContainer';
+import '../css/Playlist.css';
+import { convertMsToHM } from '../utils/utils';
 
 function CoversGrid({ coversUrl }) {
   return (
@@ -17,11 +19,14 @@ function CoversGrid({ coversUrl }) {
 }
 
 function PlaylistMetadata({ name, nTrack, duration }) {
+
+  const { hours, minutes } = convertMsToHM(duration);
+
   return (
     <div className='Playlist-metadata'>
       <p>PLAYLIST</p>
       <h1>{name}</h1>
-      <p>{nTrack} songs, {new Date(duration).toISOString().slice(11, 19)}</p>
+      <p>{nTrack} songs, {`${hours} hr ${minutes} min`}</p>
     </div>
   );
 }
@@ -42,11 +47,11 @@ function PlaylistContent({ tracks }) {
   return (
     <table style={{ width: '100%' }}>
       <colgroup>
-        <col span="1" style={{ width: '10%' }} />
-        <col span="1" style={{ width: '30%' }} />
-        <col span="1" style={{ width: '20%' }} />
-        <col span="1" style={{ width: '25%' }} />
-        <col span="1" style={{ width: '15%' }} />
+        <col span="1" style={{ minWidth: '20px' }} />
+        <col span="1" style={{ minWidth: '220px' }} />
+        <col span="1" style={{ minWidth: '150px' }} />
+        <col span="1" style={{ minWidth: '190px' }} />
+        <col span="1" style={{ minWidth: '80px' }} />
       </colgroup>
       <thead>
         <tr>
@@ -106,16 +111,20 @@ function PlaylistTrack({ index, tracklist }) {
       <td><span className='Clickable-span' onClick={playSong}>{track.name}</span></td>
       <td>{track.artists.map((e) => e.name).join(', ')}</td>
       <td>{track.album.name}</td>
-      <td>{playlistTrack.added_at}</td>
+      <td>{playlistTrack.added_at.split('T')[0]}</td>
     </tr>
   );
 }
 
-function Playlist({ coversUrl, name, nTrack, duration, tracks }) {
+function Playlist({ coversUrl, name, tracks }) {
+
+  const nTrack = tracks.length;
+  let duration = 0;
+  tracks.map(playlistTrack => duration += playlistTrack.track.duration_ms);
 
   return (
     <div className='Playlist'>
-      <PlaylistHeader name={name} coversUrl={coversUrl} nTrack={nTrack} duration={23988768} />
+      <PlaylistHeader name={name} coversUrl={coversUrl} nTrack={nTrack} duration={duration} />
       <PlaylistContent tracks={tracks} />
     </div>
   )

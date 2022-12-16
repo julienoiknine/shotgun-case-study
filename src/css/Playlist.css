@@ -1,0 +1,74 @@
+th {
+    text-align: left;
+    font-size: 15px;
+    color: var(--font-color-2);
+}
+
+td {
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: var(--font-size-1);
+}
+
+.Playlist {
+    margin: 0 15px 0 15px;
+}
+
+.Playlist-header {
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+    position: relative;
+}
+
+.Covers-grid {
+    height: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: baseline;
+    width: 100%;
+    position: absolute;
+    -webkit-mask-image: -webkit-gradient(linear, left top, right bottom,
+            from(rgb(255, 255, 255)), color-stop(0.7, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
+    border: solid 2px var(--background-color);
+}
+
+.Playlist-metadata {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    margin-left: 160px;
+    /*background: linear-gradient(135deg, transparent 0%, var(--background-color) 60%);*/
+}
+
+.Covers-grid .Blur-wrapper {
+    height: 70px;
+    width: 70px;
+    margin: 2.5px;
+}
+
+.Like-cell {
+    padding-right: 5px;
+    text-align: right;
+}
+
+.Like-icon:hover {
+    filter: drop-shadow(0px 0px 1px rgb(255, 255, 255));
+}
+
+.Default-image {
+    background-image: url('../images/no-image-icon.png');
+    background-size: contain;
+}
+
+.Clickable-span {
+    cursor: pointer;
+}
+
+.Clickable-span:hover {
+    text-decoration: underline;
+}

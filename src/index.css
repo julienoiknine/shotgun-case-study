@@ -20,11 +20,13 @@ body {
   --gradient-color-1: rgb(54, 80, 49);
   --gradient-color-2: #3d636d;
   --font-color-1: white;
-  --font-color-2: grey;
+  --font-color-2: #b10000;
+  --font-size-1: 12px;
 
   margin: 0;
   font-family: 'Space Grotesk', sans-serif;
   overflow-x: hidden;
+  overflow-y: scroll;
   color: var(--font-color-1);
 }
 
@@ -55,72 +57,10 @@ p {
   font-family: 'Space Grotesk', sans-serif;
 }
 
-th {
-  text-align: left;
-}
-
-td {
-  max-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+span {
+  font-size: var(--font-size-1);
 }
 
 #root {
   position: relative;
-}
-
-.Playlist-header {
-  display: flex;
-  flex-direction: row;
-  height: 150px;
-  position: relative;
-}
-
-.Covers-grid {
-  height: 100%;
-  aspect-ratio: 1/1;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-content: baseline;
-  width: 100%;
-  position: absolute;
-  -webkit-mask-image: -webkit-gradient(linear, left top, right bottom,
-      from(rgb(255, 255, 255)), color-stop(0.7, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
-}
-
-.Playlist-metadata {
-  position: absolute;
-  width: 100%;
-  z-index: 2;
-  padding-left: 180px;
-  /*background: linear-gradient(135deg, transparent 0%, var(--background-color) 60%);*/
-}
-
-.Covers-grid .Blur-wrapper {
-  height: 70px;
-  width: 70px;
-  margin: 2.5px;
-}
-
-.Like-cell {
-  text-align: right;
-}
-
-.Like-icon:hover {
-  filter: drop-shadow(0px 0px 1px black);
-}
-
-.Default-image {
-  background-image: url('./images/no-image-icon.png');
-  background-size: contain;
-}
-
-.Clickable-span {
-  cursor: pointer;
-}
-
-.Clickable-span:hover {
-  text-decoration: underline;
 }

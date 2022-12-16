@@ -6,12 +6,13 @@ function Favorites() {
 
   const { favorites } = useContext(FavoritesContext);
 
+  const firstTracks = Array.from(favorites.values()).slice(0, 20);
+  const covers = firstTracks.map((playlistTrack) => (playlistTrack.track.album.images[1].url));
+
   return (
     <Playlist
       name="Favorites"
-      coversUrl={[]}
-      nTrack={0}
-      duration={23988768}
+      coversUrl={covers}
       tracks={Array.from(favorites.values())} />
   );
 }

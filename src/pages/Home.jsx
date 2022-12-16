@@ -45,8 +45,6 @@ function Home() {
     <Playlist
       name={playlist.name}
       coversUrl={covers}
-      nTrack={playlist.tracks.length}
-      duration={23988768}
       tracks={playlist.tracks} />
   );
 }

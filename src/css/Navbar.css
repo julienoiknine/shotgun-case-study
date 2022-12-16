@@ -9,6 +9,7 @@
 .Route-link {
     text-decoration: none;
     /*transition: transform 0.05s ease-in;*/
+    transition: all 0.05s;
     width: 130px;
     height: 20px;
     position: relative;
@@ -27,12 +28,11 @@
 }
 
 .Route-active {
-    transition: all 0.05s;
-    -webkit-transform: rotate(-20deg);
+    -webkit-transform: rotate(-17deg);
 }
 
 .Route-active h2 {
-    transition: all 0.5s ease-in;
+    transition: all 0.3s ease-in;
     transform: translateX(0);
     left: 0;
 }
