@@ -1,0 +1,9 @@
+.Navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Navbar h2 {
+    color: var(--font-color-1);
+}

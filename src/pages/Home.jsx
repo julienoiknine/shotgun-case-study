@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 
-import { PlaylistHeader, Playlist } from '../components/Playlist'
+import Playlist from '../components/Playlist'
 
 const QUERY = gql`
   query GetPlaylist {
@@ -38,15 +38,24 @@ function Home() {
   console.log(data);
 
   const playlist = data.playlist;
-  const firstTracks = playlist.tracks.slice(0, 4);
+  const firstTracks = playlist.tracks.slice(0, 20);
   const covers = firstTracks.map((playlistTrack) => (playlistTrack.track.album.images[1].url));
 
   return (
-    <>
+    <Playlist
+      name={playlist.name}
+      coversUrl={covers}
+      nTrack={playlist.tracks.length}
+      duration={23988768}
+      tracks={playlist.tracks} />
+  );
+}
+
+/*
+<>
       <PlaylistHeader name={playlist.name} coversUrl={covers} nTrack={playlist.tracks.length} duration={23988768} />
       <Playlist tracks={playlist.tracks} />
     </>
-  );
-}
+*/
 
 export default Home;

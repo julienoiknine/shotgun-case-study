@@ -26,12 +26,13 @@ function App() {
     <FavoritesContext.Provider value={{ favorites, setFavorites }}>
       <PlayerContext.Provider value={{ playerContext, setPlayerContext }}>
         <BrowserRouter>
-          <Navbar />
+          <div className='Background' />
+          <Navbar style={{ position: 'absolute' }} />
           <Routes>
             <Route index element={<Home />} />
             <Route path='favorites' element={<Favorites />} />
           </Routes>
-          <Player />
+          <Player style={{ position: 'absolute' }} />
         </BrowserRouter>
       </PlayerContext.Provider>
     </FavoritesContext.Provider>

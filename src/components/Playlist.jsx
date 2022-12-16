@@ -3,12 +3,14 @@ import { faCalendarPlus, faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons'
 import { useContext, useEffect, useState } from 'react';
 import { FavoritesContext, PlayerContext } from '../App';
+import BlurContainer from './BlurContainer';
 
 function CoversGrid({ coversUrl }) {
   return (
     <div className='Covers-grid'>
-      {[...Array(4)].map((e, i) => {
-        return <img className="Default-image" key={i} src={coversUrl[i]} />
+      {[...Array(20)].map((e, i) => {
+        // return <img className="Default-image" key={i} src={coversUrl[i]} />
+        return <BlurContainer src={coversUrl[i]} blur={0.0001 + 0.1 * (Math.floor((i) / 3))} />
       })}
     </div>
   );
@@ -33,7 +35,7 @@ function PlaylistHeader({ coversUrl, name, nTrack, duration }) {
   );
 }
 
-function Playlist({ tracks }) {
+function PlaylistContent({ tracks }) {
 
   console.log('playlist rendered')
 
@@ -109,4 +111,15 @@ function PlaylistTrack({ index, tracklist }) {
   );
 }
 
-export { PlaylistHeader, Playlist };
+function Playlist({ coversUrl, name, nTrack, duration, tracks }) {
+
+  return (
+    <div className='Playlist'>
+      <PlaylistHeader name={name} coversUrl={coversUrl} nTrack={nTrack} duration={23988768} />
+      <PlaylistContent tracks={tracks} />
+    </div>
+  )
+
+}
+
+export default Playlist;

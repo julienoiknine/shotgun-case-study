@@ -1,3 +1,5 @@
+@import-normalize;
+
 @font-face {
   font-family: "Monument Extended Regular";
   src: local("MonumentExtended-Regular"),
@@ -13,11 +15,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@1,100&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 body {
+
+  --background-color: black;
+  --gradient-color-1: rgb(146 118 184);
+  --gradient-color-2: #81427e;
+  --font-color-1: white;
+  --font-color-2: grey;
+
   margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+
+  color: var(--font-color-1);
+}
+
+.Background {
+  z-index: -1;
+  position: absolute;
+  background: linear-gradient(to right, var(--gradient-color-1) 10%, var(--gradient-color-2) 60%, var(--background-color));
+  height: 100%;
+  width: 100%;
+}
+
+.Background::before {
+  content: "";
+  display: block;
+  height: 100%;
+  background: linear-gradient(to right, var(--background-color), var(--background-color));
+  filter: contrast(170%) brightness(100%);
+  -webkit-mask: linear-gradient(to bottom, #0000, #000 200px), url(https://grainy-gradients.vercel.app/noise.svg);
+  mask: linear-gradient(to bottom, #0000, #000 200px), url(https://grainy-gradients.vercel.app/noise.svg);
 }
 
 h1 {
-  font-family: "Monument Extended Bold";
+  font-family: "Monument Extended Bold", sans-serif;
 }
 
 p {
@@ -35,10 +65,15 @@ td {
   white-space: nowrap;
 }
 
+#root {
+  position: relative;
+}
+
 .Playlist-header {
   display: flex;
   flex-direction: row;
   height: 150px;
+  position: relative;
 }
 
 .Covers-grid {
@@ -46,11 +81,26 @@ td {
   aspect-ratio: 1/1;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  align-content: baseline;
+  width: 100%;
+  position: absolute;
+  -webkit-mask-image: -webkit-gradient(linear, left top, right bottom,
+      from(rgb(255, 255, 255)), color-stop(0.7, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0)));
 }
 
-.Covers-grid img {
-  height: 50%;
-  aspect-ratio: 1/1;
+.Playlist-metadata {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  padding-left: 180px;
+  /*background: linear-gradient(135deg, transparent 0%, var(--background-color) 60%);*/
+}
+
+.Covers-grid .Blur-wrapper {
+  height: 70px;
+  width: 70px;
+  margin: 2.5px;
 }
 
 .Like-cell {
