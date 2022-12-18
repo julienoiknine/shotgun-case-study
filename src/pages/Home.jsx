@@ -1,4 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
+import { useEffect } from 'react';
 
 import Playlist from '../components/Playlist'
 
@@ -40,6 +41,8 @@ function Home() {
   const playlist = data.playlist;
   const firstTracks = playlist.tracks.slice(0, 20);
   const covers = firstTracks.map((playlistTrack) => (playlistTrack.track.album.images[1].url));
+
+  document.title = `Shotgun - ${playlist.name}`;
 
   return (
     <Playlist

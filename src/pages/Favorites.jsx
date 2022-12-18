@@ -9,6 +9,8 @@ function Favorites() {
   const firstTracks = Array.from(favorites.values()).slice(0, 20);
   const covers = firstTracks.map((playlistTrack) => (playlistTrack.track.album.images[1].url));
 
+  document.title = `My favorites (${favorites.size})`;
+
   return (
     <Playlist
       name="Favorites"
