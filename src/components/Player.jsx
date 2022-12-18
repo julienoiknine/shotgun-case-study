@@ -2,9 +2,8 @@ import { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faForwardStep, faBackwardStep } from '@fortawesome/free-solid-svg-icons'
 import { PlayerContext } from '../App';
-import { isEmpty, getMinutes } from '../utils/utils';
+import { getMinutes } from '../utils/utils';
 import '../css/Player.css';
-import { fieldNameFromStoreName } from '@apollo/client/cache';
 
 const audio = new Audio();
 
@@ -90,7 +89,6 @@ function Player() {
       </div>
       <div className='Player-cont'>
         <div className='Noise'></div>
-        <div className='Overlay'></div>
         {track ? <img className='Player-img' src={track.album.images[0].url} alt="" /> : null}
         <div className='Row-flex'>
           <FontAwesomeIcon icon={faBackwardStep} onClick={onPrevious} />

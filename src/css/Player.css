@@ -47,11 +47,6 @@
     mask: linear-gradient(270deg, #0000 2600px, #000 2990px, #000 3000px), url(https://grainy-gradients.vercel.app/noise.svg);
 }
 
-/*.Overlay {
-    background: var(--background-color);
-    mix-blend-mode: multiply;
-}*/
-
 .Player-icon {
     width: 10px;
     margin: 0 15px 0 15px;
@@ -59,7 +54,6 @@
 
 .Player-img {
     height: 100%;
-    border-radius: 3px;
 }
 
 .Row-flex {
