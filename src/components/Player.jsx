@@ -7,6 +7,11 @@ import '../css/Player.css';
 
 const audio = new Audio();
 
+/**
+ * Player component. The player is a footer that gets displayed when a the user
+ * plays a track for the first time.
+ * @returns 
+ */
 function Player() {
 
   const [audioPaused, setAudioPaused] = useState(audio.paused);
@@ -16,16 +21,12 @@ function Player() {
 
   const { playerContext: pc, setPlayerContext } = useContext(PlayerContext);
 
-  //console.log(`rendering player, track: ${track}`);
-
   useEffect(() => {
-    console.log("usueehj")
     if (!pc.tracklist[pc.index]) return;
     const newTrack = pc.tracklist[pc.index].track;
     setTrack(newTrack);
-    console.log(`changing audio url to ${newTrack.preview_url}`);
     audio.src = newTrack.preview_url;
-    safePlay();
+    playOrPassToNext();
     setAudioPaused(audio.paused);
     setProgress(0);
     audio.onloadedmetadata = () => {
@@ -43,7 +44,6 @@ function Player() {
   });
 
   function togglePlay() {
-    console.log(`play/pause ${track.name}`);
     audio.paused ? audio.play() : audio.pause();
     setAudioPaused(audio.paused);
   }
@@ -62,7 +62,7 @@ function Player() {
     return track ? "Footer Active" : "Footer";
   }
 
-  async function safePlay() {
+  async function playOrPassToNext() {
     const promise = audio.play();
     if (promise !== undefined) {
       promise.then(() => { }).catch((e) => {

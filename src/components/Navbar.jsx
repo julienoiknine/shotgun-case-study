@@ -2,6 +2,12 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import '../css/Navbar.css';
 
+
+/**
+ * Navigation bar. A header that gets displayed at the top of the screen in
+ * each page.
+ * @returns 
+ */
 function Navbar() {
 
   const location = useLocation();

@@ -1,9 +1,8 @@
 import { gql, useQuery } from '@apollo/client';
-import { useEffect } from 'react';
 
 import Playlist from '../components/Playlist'
 
-const QUERY = gql`
+const PLAYLIST_QUERY = gql`
   query GetPlaylist {
     playlist {
       name
@@ -31,15 +30,14 @@ const QUERY = gql`
 
 function Home() {
 
-  const { loading, error, data } = useQuery(QUERY);
+  const { loading, error, data } = useQuery(PLAYLIST_QUERY);
 
   if (loading) return 'Loading...';
   if (error) return `Error! ${error.message}`;
 
-  console.log(data);
-
   const playlist = data.playlist;
   const firstTracks = playlist.tracks.slice(0, 20);
+  // We use the medium sized image for the playlist's covers grid
   const covers = firstTracks.map((playlistTrack) => (playlistTrack.track.album.images[1].url));
 
   document.title = `Shotgun - ${playlist.name}`;
@@ -51,12 +49,5 @@ function Home() {
       tracks={playlist.tracks} />
   );
 }
-
-/*
-<>
-      <PlaylistHeader name={playlist.name} coversUrl={covers} nTrack={playlist.tracks.length} duration={23988768} />
-      <Playlist tracks={playlist.tracks} />
-    </>
-*/
 
 export default Home;

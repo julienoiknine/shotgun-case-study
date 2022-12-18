@@ -7,17 +7,34 @@ import BlurContainer from './BlurContainer';
 import '../css/Playlist.css';
 import { convertMsToHM } from '../utils/utils';
 
+
+/**
+ * A 2x20 grid composed of the 20 first (or less is the playlist is smaller) 
+ * album covers of the playlist.
+ * @param {Object} props 
+ * @param {Array.<string>} props.coversUrl the urls of the album covers
+ * @returns 
+ */
 function CoversGrid({ coversUrl }) {
   return (
     <div className='Covers-grid'>
       {[...Array(20)].map((e, i) => {
-        // return <img className="Default-image" key={i} src={coversUrl[i]} />
-        return <BlurContainer src={coversUrl[i]} blur={0.0001 + 0.1 * (Math.floor((i) / 3))} />
+        // The more to the right a column of cover is, the more blurry it gets
+        return <BlurContainer key={i} src={coversUrl[i]} blur={0.0001 + 0.1 * (Math.floor((i) / 3))} />
       })}
     </div>
   );
 }
 
+
+/**
+ * Component displaying the playlist's metadata, such as its name, duration...
+ * @param {Object} props 
+ * @param {string} props.name the playlist's name
+ * @param {number} props.nTrack number of tracks in the playlist
+ * @param {duration} props.duration duration of the playlist
+ * @returns 
+ */
 function PlaylistMetadata({ name, nTrack, duration }) {
 
   const { hours, minutes } = convertMsToHM(duration);
@@ -31,6 +48,16 @@ function PlaylistMetadata({ name, nTrack, duration }) {
   );
 }
 
+
+/**
+ * Playlist's header component.
+ * @param {Object} props 
+ * @param {Array.<string>} props.coversUrl the urls of the album covers
+ * @param {string} props.name the playlist's name
+ * @param {number} props.nTrack number of tracks in the playlist
+ * @param {duration} props.duration duration of the playlist
+ * @returns 
+ */
 function PlaylistHeader({ coversUrl, name, nTrack, duration }) {
   return (
     <div className='Playlist-header'>
@@ -40,9 +67,14 @@ function PlaylistHeader({ coversUrl, name, nTrack, duration }) {
   );
 }
 
-function PlaylistContent({ tracks }) {
 
-  console.log('playlist rendered')
+/**
+ * Table component containing the playlist's tracks. 
+ * @param {Object} props
+ * @param {Array.<Object>} props.tracks an array containing the playlist's tracks
+ * @returns 
+ */
+function PlaylistContent({ tracks }) {
 
   return (
     <table style={{ width: '100%' }}>
@@ -73,6 +105,14 @@ function PlaylistContent({ tracks }) {
   );
 }
 
+
+/**
+ * A single track component. 
+ * @param {Object} props 
+ * @param {number} props.index the index of the track in the tracklist array
+ * @param {Array.<Object>} props.tracklist an array containing the playlist's tracks
+ * @returns 
+ */
 function PlaylistTrack({ index, tracklist }) {
 
   const playlistTrack = tracklist[index];
@@ -101,7 +141,6 @@ function PlaylistTrack({ index, tracklist }) {
   }
 
   function playSong() {
-    console.log(`setting playerContext to ${index}, ${tracklist}`);
     setPlayerContext({ index, tracklist });
   }
 
@@ -116,6 +155,16 @@ function PlaylistTrack({ index, tracklist }) {
   );
 }
 
+
+/**
+ * Playlist component. Composed of a header displaying the playlist's metadata
+ * and a table containing the playlist's tracks.
+ * @param {Object} props 
+ * @param {Array.<string>} props.coversUrl the urls of the album covers
+ * @param {string} props.name the playlist's name
+ * @param {Array.<Object>} props.tracks the tracks 
+ * @returns 
+ */
 function Playlist({ coversUrl, name, tracks }) {
 
   const nTrack = tracks.length;

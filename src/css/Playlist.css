@@ -13,7 +13,8 @@ td {
 }
 
 .Playlist {
-    margin: 0 15px 35px 15px;
+    margin: 0 15px 0 15px;
+    padding-bottom: 35px;
 }
 
 .Playlist-header {

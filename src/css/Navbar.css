@@ -8,7 +8,6 @@
 
 .Route-link {
     text-decoration: none;
-    /*transition: transform 0.05s ease-in;*/
     transition: all 0.05s;
     width: 130px;
     height: 20px;

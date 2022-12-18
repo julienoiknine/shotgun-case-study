@@ -2,6 +2,11 @@ import { React, useContext } from 'react';
 import Playlist from '../components/Playlist'
 import { FavoritesContext } from '../App';
 
+/**
+ * The user's favorite tracks.
+ * @param {Object} props 
+ * @returns 
+ */
 function Favorites() {
 
   const { favorites } = useContext(FavoritesContext);
