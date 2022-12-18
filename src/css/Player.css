@@ -21,11 +21,12 @@
 }
 
 .Player-cont {
-    height: 30px;
+    height: 35px;
     display: flex;
     padding: 5px;
     align-items: center;
     gap: 15px;
+    box-sizing: border-box;
 }
 
 .Noise {
