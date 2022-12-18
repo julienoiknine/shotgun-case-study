@@ -69,44 +69,6 @@ function PlaylistHeader({ coversUrl, name, nTrack, duration }) {
 
 
 /**
- * Table component containing the playlist's tracks. 
- * @param {Object} props
- * @param {Array.<Object>} props.tracks an array containing the playlist's tracks
- * @returns 
- */
-function PlaylistContent({ tracks }) {
-
-  return (
-    <table style={{ width: '100%' }}>
-      <colgroup>
-        <col span="1" style={{ minWidth: '20px' }} />
-        <col span="1" style={{ minWidth: '220px' }} />
-        <col span="1" style={{ minWidth: '150px' }} />
-        <col span="1" style={{ minWidth: '190px' }} />
-        <col span="1" style={{ minWidth: '80px' }} />
-      </colgroup>
-      <thead>
-        <tr>
-          <th></th>
-          <th>TITLE</th>
-          <th>ARTIST</th>
-          <th>ALBUM</th>
-          <th><FontAwesomeIcon icon={faCalendarPlus} /></th>
-        </tr>
-      </thead>
-      <tbody>
-        {tracks.map((e, i) => <PlaylistTrack
-          key={i}
-          index={i}
-          tracklist={tracks}
-        />)}
-      </tbody>
-    </table>
-  );
-}
-
-
-/**
  * A single track component. 
  * @param {Object} props 
  * @param {number} props.index the index of the track in the tracklist array
@@ -152,6 +114,44 @@ function PlaylistTrack({ index, tracklist }) {
       <td>{track.album.name}</td>
       <td>{playlistTrack.added_at.split('T')[0]}</td>
     </tr>
+  );
+}
+
+
+/**
+ * Table component containing the playlist's tracks. 
+ * @param {Object} props
+ * @param {Array.<Object>} props.tracks an array containing the playlist's tracks
+ * @returns 
+ */
+function PlaylistContent({ tracks }) {
+
+  return (
+    <table style={{ width: '100%' }}>
+      <colgroup>
+        <col span="1" style={{ minWidth: '20px' }} />
+        <col span="1" style={{ minWidth: '220px' }} />
+        <col span="1" style={{ minWidth: '150px' }} />
+        <col span="1" style={{ minWidth: '190px' }} />
+        <col span="1" style={{ minWidth: '80px' }} />
+      </colgroup>
+      <thead>
+        <tr>
+          <th></th>
+          <th>TITLE</th>
+          <th>ARTIST</th>
+          <th>ALBUM</th>
+          <th><FontAwesomeIcon icon={faCalendarPlus} /></th>
+        </tr>
+      </thead>
+      <tbody>
+        {tracks.map((e, i) => <PlaylistTrack
+          key={i}
+          index={i}
+          tracklist={tracks}
+        />)}
+      </tbody>
+    </table>
   );
 }
 
