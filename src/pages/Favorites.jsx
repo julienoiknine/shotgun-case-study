@@ -1,5 +1,5 @@
 import { React, useContext } from 'react';
-import Playlist from '../components/Playlist'
+import { Playlist } from '../components/Playlist'
 import { FavoritesContext } from '../App';
 
 /**

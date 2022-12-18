@@ -119,12 +119,32 @@ function PlaylistTrack({ index, tracklist }) {
 
 
 /**
+ * Placeholder track component with loading animation.
+ * @returns 
+ */
+function LoadingPlaylistTrack() {
+
+  return (
+    <tr>
+      <td
+        className='Empty-row Loading'
+        style={{ ...{ animationDelay: (Math.random()) + 's' } }}
+        colSpan={5}>
+      </td>
+    </tr>
+
+  );
+}
+
+
+/**
  * Table component containing the playlist's tracks. 
  * @param {Object} props
+ * @param {boolean} loading is the content still loading? 
  * @param {Array.<Object>} props.tracks an array containing the playlist's tracks
  * @returns 
  */
-function PlaylistContent({ tracks }) {
+function PlaylistContent({ loading, tracks }) {
 
   return (
     <table style={{ width: '100%' }}>
@@ -145,11 +165,14 @@ function PlaylistContent({ tracks }) {
         </tr>
       </thead>
       <tbody>
-        {tracks.map((e, i) => <PlaylistTrack
-          key={i}
-          index={i}
-          tracklist={tracks}
-        />)}
+        {loading ?
+          [...Array(5)].map((e, i) => <LoadingPlaylistTrack key={i} />)
+          :
+          tracks.map((e, i) => <PlaylistTrack
+            key={i}
+            index={i}
+            tracklist={tracks} />)
+        }
       </tbody>
     </table>
   );
@@ -180,4 +203,18 @@ function Playlist({ coversUrl, name, tracks }) {
 
 }
 
-export default Playlist;
+/**
+ * Placeholder container with loading animations.
+ * @returns 
+ */
+function LoadingPlaylist() {
+  return (
+    <div className='Playlist'>
+      <div className='Playlist-header Loading'></div>
+      <PlaylistContent loading={true} tracks={[]} />
+    </div>
+  )
+}
+
+
+export { Playlist, LoadingPlaylist };

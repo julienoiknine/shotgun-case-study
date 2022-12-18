@@ -14,7 +14,7 @@
     position: relative;
     transform-origin: right;
     border-bottom: solid;
-    border-color: white;
+    border-color: var(--font-color-1);
 }
 
 .Route-link h2 {

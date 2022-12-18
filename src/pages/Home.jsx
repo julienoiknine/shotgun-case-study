@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 
-import Playlist from '../components/Playlist'
+import { Playlist, LoadingPlaylist } from '../components/Playlist'
 
 const PLAYLIST_QUERY = gql`
   query GetPlaylist {
@@ -32,7 +32,7 @@ function Home() {
 
   const { loading, error, data } = useQuery(PLAYLIST_QUERY);
 
-  if (loading) return 'Loading...';
+  if (loading) return <LoadingPlaylist />;
   if (error) return `Error! ${error.message}`;
 
   const playlist = data.playlist;

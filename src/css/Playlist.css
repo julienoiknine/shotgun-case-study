@@ -12,6 +12,29 @@ td {
     font-size: var(--font-size-1);
 }
 
+@keyframes placeHolderShimmer {
+    0% {
+        background-position: -100vw 0
+    }
+
+    100% {
+        background-position: 100vw 0
+    }
+}
+
+.Loading {
+    border-radius: 5px;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: var(--background-color);
+    background-image: linear-gradient(100deg, var(--background-color) 10%, #3b0b0b3f 40%, #3b0b0b3f 60%, var(--background-color) 70%);
+    background-repeat: no-repeat;
+    position: relative;
+}
+
 .Playlist {
     margin: 0 15px 0 15px;
     padding-bottom: 35px;
@@ -50,6 +73,10 @@ td {
     height: 70px;
     width: 70px;
     margin: 2.5px;
+}
+
+.Empty-row {
+    height: 20px;
 }
 
 .Like-cell {
