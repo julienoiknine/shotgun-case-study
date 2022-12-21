@@ -195,9 +195,11 @@ function Playlist({ coversUrl, name, tracks }) {
   tracks.map(playlistTrack => duration += playlistTrack.track.duration_ms);
 
   return (
-    <div className='Playlist'>
-      <PlaylistHeader name={name} coversUrl={coversUrl} nTrack={nTrack} duration={duration} />
-      <PlaylistContent tracks={tracks} />
+    <div className='Centered-cont'>
+      <div className='Playlist'>
+        <PlaylistHeader name={name} coversUrl={coversUrl} nTrack={nTrack} duration={duration} />
+        <PlaylistContent tracks={tracks} />
+      </div>
     </div>
   )
 
@@ -209,9 +211,11 @@ function Playlist({ coversUrl, name, tracks }) {
  */
 function LoadingPlaylist() {
   return (
-    <div className='Playlist'>
-      <div className='Playlist-header Loading'></div>
-      <PlaylistContent loading={true} tracks={[]} />
+    <div className='Centered-cont'>
+      <div className='Playlist'>
+        <div className='Playlist-header Loading'></div>
+        <PlaylistContent loading={true} tracks={[]} />
+      </div>
     </div>
   )
 }

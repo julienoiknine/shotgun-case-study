@@ -67,3 +67,8 @@ span {
 #root {
   position: relative;
 }
+
+.Centered-cont {
+  display: flex;
+  justify-content: center;
+}
