@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/shotgun-case-study/static/css/main.0f73df05.css",
+    "main.js": "/shotgun-case-study/static/js/main.843b52d5.js",
+    "static/media/MonumentExtended-Regular.otf": "/shotgun-case-study/static/media/MonumentExtended-Regular.db74f7a563ec017311bc.otf",
+    "static/media/MonumentExtended-Ultrabold.otf": "/shotgun-case-study/static/media/MonumentExtended-Ultrabold.9db16afed1996befff6b.otf",
+    "index.html": "/shotgun-case-study/index.html",
+    "main.0f73df05.css.map": "/shotgun-case-study/static/css/main.0f73df05.css.map",
+    "main.843b52d5.js.map": "/shotgun-case-study/static/js/main.843b52d5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0f73df05.css",
+    "static/js/main.843b52d5.js"
+  ]
+}
